@@ -1,11 +1,10 @@
-site_name: My Docs
+site_name: How to use Docker Compose
 site_url: https://howtosteps.github.io/mkdocs-python-docker-compose/site/
 nav:
-  - Home: index.md
-  - About: about.md
+  - Introduction: index.md
   - Setup: setup.md
   - Create Dockerfile : create-dockerfile.md
   - Define Docker-Compose : docker-compose.md
   - Build your app : build-your-app.md
-  - Run the app : run-your-app.md
+  - Check your app : check-your-app.md
 theme: readthedocs

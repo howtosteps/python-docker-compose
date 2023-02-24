@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://howtosteps.github.io/mkdocs-python-docker-compose/site/build-your-app/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Build your app - My Docs</title>
+    <title>Build your app - How to use Docker Compose</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> My Docs
+          <a href=".." class="icon icon-home"> How to use Docker Compose
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -41,11 +41,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
                 </li>
               </ul>
               <ul>
@@ -67,7 +63,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../run-your-app/">Run the app</a>
+                <li class="toctree-l1"><a class="reference internal" href="../check-your-app/">Check your app</a>
                 </li>
               </ul>
       </div>
@@ -77,7 +73,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">My Docs</a>
+          <a href="..">How to use Docker Compose</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -93,18 +89,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="build-your-app-using-docker-compose">Build your App using docker-compose</h1>
-<p>From your project directory, start up your application by running docker-compose up</p>
-<pre><code>C:\Users\aniru\workspace\docker\python-docker-compose&gt; docker-compose up
+                <h1 id="start-your-app-using-docker-compose">Start your app using docker-compose</h1>
+<p>From your project directory, start up your application by running docker-compose up. Please note that we will use <code>d</code> flag to run the command in detached mode. </p>
+<pre><code>C:\Users\aniru\workspace\docker\python-docker-compose&gt; docker-compose up -d
 </code></pre>
 <p><img alt="Screenshot" src="../img/docker-compose-up.png" /></p>
-<p>Compose pulls a Redis image, builds an image for your code, and starts the services you defined. In this case, the code is statically copied into the image at build time.</p>
+<p>As you can see, compose does the following :</p>
+<ul>
+<li>Compose pulls latest redis image from dockerhub</li>
+<li>Builds an image for your Dockerfile and binds it to exposed container port : 5000</li>
+<li>Starts both the services you defined. In this case, the code is statically copied into the image at build time.</li>
+</ul>
+<p>You can now check the status of the containers with usual <code>docker ps</code> command. </p>
+<pre><code>PS C:\Users\aniru\workspace\github\python-docker-compose&gt; docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                    NAMES
+205db680ecc6   python-docker-compose-web   &quot;flask run&quot;              3 minutes ago   Up 2 minutes   0.0.0.0:5000-&gt;5000/tcp   python-docker-compose-web-1      
+92d7495e846d   redis:alpine                &quot;docker-entrypoint.s…&quot;   3 minutes ago   Up 2 minutes   6379/tcp                 python-docker-compose-redis-1   
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../docker-compose/" class="btn btn-neutral float-left" title="Define Docker-Compose"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../run-your-app/" class="btn btn-neutral float-right" title="Run the app">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../check-your-app/" class="btn btn-neutral float-right" title="Check your app">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -130,7 +137,7 @@
       <span><a href="../docker-compose/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../run-your-app/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../check-your-app/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

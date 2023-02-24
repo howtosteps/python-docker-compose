@@ -2,37 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/</loc>
-         <lastmod>2023-01-06</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/about/</loc>
-         <lastmod>2023-01-06</lastmod>
+         <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/build-your-app/</loc>
-         <lastmod>2023-01-06</lastmod>
+         <lastmod>2023-02-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/check-your-app/</loc>
+         <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/create-dockerfile/</loc>
-         <lastmod>2023-01-06</lastmod>
+         <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/docker-compose/</loc>
-         <lastmod>2023-01-06</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/run-your-app/</loc>
-         <lastmod>2023-01-06</lastmod>
+         <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://howtosteps.github.io/mkdocs-python-docker-compose/site/setup/</loc>
-         <lastmod>2023-01-06</lastmod>
+         <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

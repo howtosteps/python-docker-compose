@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://howtosteps.github.io/mkdocs-python-docker-compose/site/about/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://howtosteps.github.io/mkdocs-python-docker-compose/site/check-your-app/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>About - My Docs</title>
+    <title>Check your app - How to use Docker Compose</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "About";
-        var mkdocs_page_input_path = "about.md";
-        var mkdocs_page_url = "/mkdocs-python-docker-compose/site/about/";
+        var mkdocs_page_name = "Check your app";
+        var mkdocs_page_input_path = "check-your-app.md";
+        var mkdocs_page_url = "/mkdocs-python-docker-compose/site/check-your-app/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> My Docs
+          <a href=".." class="icon icon-home"> How to use Docker Compose
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -41,13 +41,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
                 </li>
               </ul>
               <ul>
@@ -66,8 +60,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../build-your-app/">Build your app</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../run-your-app/">Run the app</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Check your app</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
       </div>
@@ -77,14 +73,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">My Docs</a>
+          <a href="..">How to use Docker Compose</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>About</li>
+      <li>Check your app</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -93,28 +89,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="about-this-site">About this site</h2>
-<p>This is a simple tutorial that describes how to build a container using docker-compose </p>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#pre-requesites">Pre-requisites</a></li>
-<li><a href="#step-1">Step 1</a></li>
-<li><a href="#step-2">Step-2</a></li>
-<li><a href="#step-3">Step-3</a></li>
-</ul>
-<h2 id="pre-requisites"><a name="pre-requisites"></a>Pre-requisites</h2>
-<h2 id="step-1"><a name="step-1"></a>Step 1</h2>
-<p>Start here ...</p>
-<pre><code class="language-bash">mkdir 
+                <h2 id="run-your-app-in-your-browser">Run your app in your browser</h2>
+<p>Enter http://localhost:5000/ on your browser. You should see </p>
+<p><img alt="Screenshot" src="../img/localhost-test.png" /></p>
+<h2 id="check-inside-the-container">Check inside the container</h2>
+<p>Now that all is running fine. Let's check inside the container how it was built. We will use the container-id of the web-app container</p>
+<pre><code>PS C:\Users\aniru\workspace\github\python-docker-compose&gt; docker ps             
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                    NAMES
+205db680ecc6   python-docker-compose-web   &quot;flask run&quot;              13 minutes ago   Up 13 minutes   0.0.0.0:5000-&gt;5000/tcp   python-docker-compose-web-1    
+92d7495e846d   redis:alpine                &quot;docker-entrypoint.s…&quot;   13 minutes ago   Up 13 minutes   6379/tcp                 python-docker-compose-redis-1 
 </code></pre>
-<h2 id="step-2"><a name="step-2"></a>Step 2</h2>
-<h2 id="step-3"><a name="step-3"></a>Step 3</h2>
+<pre><code>docker exec -it  205db680ecc6 /bin/sh
+</code></pre>
+<pre><code>PS C:\Users\aniru\workspace\github\python-docker-compose&gt; docker exec -it  205db680ecc6 /bin/sh
+/code # ls
+Dockerfile           __pycache__          command-list.md      docs                 requirements.txt
+README.md            app.py               docker-compose.yaml  mkdocs.yml           site
+/code #
+</code></pre>
+<p>Notice that the workdir is set to <code>/code</code> as specified in the DockerFile</p>
+<h2 id="shutdown-all-the-containers">Shutdown all the containers</h2>
+<p>Let's shut it all down.</p>
+<pre><code>docker-compose down
+</code></pre>
+<p><code>PS C:\Users\aniru\workspace\github\python-docker-compose&gt; docker-compose down
+[+] Running 3/3
+ - Container python-docker-compose-redis-1  Removed                                                                                                     0.6s 
+ - Container python-docker-compose-web-1    Removed                                                                                                     1.2s 
+ - Network python-docker-compose_default    Removed</code></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../setup/" class="btn btn-neutral float-right" title="Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../build-your-app/" class="btn btn-neutral float-left" title="Build your app"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -137,10 +144,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../build-your-app/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../setup/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

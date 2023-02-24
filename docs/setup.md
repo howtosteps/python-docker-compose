@@ -9,7 +9,7 @@ C:\Users\aniru\workspace\docker> mkdir python-docker-compose
 
 ## 2. Create application files 
 ### 2.1 Create app.py file 
-app.py is the main python file. `redis` is the hostname of the redis container. 
+app.py is the main python file. `redis` is the hostname of the redis container that is expected to be running on a different container host. 
 
 ```
 import time
@@ -37,3 +37,10 @@ def hello():
     return 'Hello hee haw ....again counter:{}\n'.format(count)
 ```
 ### 2.2 Create requirements.txt 
+
+Create and copy the following contents to `requirements.txt`. 
+```
+flask
+redis
+```
+This will tell docker to pre-install these dependencies into the container. This is referenced in DockerFile as `RUN pip install -r requirements.txt`

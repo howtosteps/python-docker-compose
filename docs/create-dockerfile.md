@@ -1,4 +1,4 @@
-# Create a DockerFile
+# Create DockerFile
 We will now create a DockerFile that builds a Docker image. The image contains all the dependencies the Python application requires, including Python itself.
 
 In the project directory, create a file named `DockerFile`

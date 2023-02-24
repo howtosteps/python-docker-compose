@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://howtosteps.github.io/mkdocs-python-docker-compose/site/docker-compose/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Define Docker-Compose - My Docs</title>
+    <title>Define Docker-Compose - How to use Docker Compose</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> My Docs
+          <a href=".." class="icon icon-home"> How to use Docker Compose
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -41,11 +41,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
                 </li>
               </ul>
               <ul>
@@ -59,10 +55,6 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Define Docker-Compose</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#web-service">Web service</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#redis-service">Redis service</a>
-    </li>
     </ul>
                 </li>
               </ul>
@@ -71,7 +63,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../run-your-app/">Run the app</a>
+                <li class="toctree-l1"><a class="reference internal" href="../check-your-app/">Check your app</a>
                 </li>
               </ul>
       </div>
@@ -81,7 +73,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">My Docs</a>
+          <a href="..">How to use Docker Compose</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -97,23 +89,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="define-services-a-in-docker-compose-file">Define services a in Docker Compose File</h1>
+                <h1 id="configure-services">Configure services</h1>
 <p>Create a file called <code>docker-compose.yml</code> in your project directory and paste the following:</p>
-<pre><code>FROM python:3.7-alpine
-WORKDIR /code
-ENV FLASK_APP app.py
-ENV FLASK_RUN_HOST 0.0.0.0
-# RUN apk add --no-cache gcc musl-dev linux headers
-COPY requirements.txt requirements.txt 
-RUN pip install -r requirements.txt
-COPY . .
-CMD [&quot;flask&quot;,&quot;run&quot;]
+<pre><code>version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/code
+    environment:
+      - FLASK_ENV=development
+  redis:
+    image: redis:alpine
 </code></pre>
-<p>This Compose file defines two services: web and redis </p>
-<h2 id="web-service">Web service</h2>
-<p>The web service uses an image that’s built from the Dockerfile in the current directory. It then binds the container and the host machine to the exposed port, 5000. This example service uses the default port for the Flask web server, 5000.</p>
-<h2 id="redis-service">Redis service</h2>
-<p>The redis service uses a public Redis image pulled from the Docker Hub registry.</p>
+<p>This tells Compose tool to : </p>
+<ul>
+<li>
+<p>Define 2 services - web and redis</p>
+<ul>
+<li>
+<p><strong>Web service</strong> - Use an image that’s built from the Dockerfile in the current directory. It then binds the container and the host machine to the exposed port:5000. This example service uses the default port for the Flask web server: 5000.</p>
+</li>
+<li>
+<p><strong>Redis service</strong> - Use public Redis image pulled from the Docker Hub registry.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Set the version to 3</p>
+</li>
+</ul>
               
             </div>
           </div><footer>
